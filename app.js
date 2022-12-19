@@ -13,10 +13,11 @@ const corsOpts = {
     // origin: 'http://localhost:3000',
     origin: process.env.LOCALPORT,
     credentials: true,
-    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type']
+    methods: ['GET','POST','PUT','PATCH','DELETE'],
+    // allowedHeaders: ['Content-Type'],
+    // exposedHeaders: ['Content-Type']
 };
+app.use(cookieParser());
 app.use(cors(corsOpts));
 
 const errorMiddleware = require("./middleware/error");
@@ -42,7 +43,7 @@ const fileupload = require('express-fileupload');
         // }
         
         app.use(express.json());
-        app.use(cookieParser());
+        // app.use(cookieParser());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(fileUpload());
         
